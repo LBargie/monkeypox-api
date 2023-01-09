@@ -15,5 +15,7 @@ I have included a Jupyter Notebook with an example of how to get data from the A
 Check out the documentation for help:
 
 https://fastapi.tiangolo.com
+
 https://beautiful-soup-4.readthedocs.io/en/latest/
+
 https://www.uvicorn.org
