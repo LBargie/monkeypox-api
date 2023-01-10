@@ -16,7 +16,7 @@ pip install beautifulsoup4
 
 To run the API, run: 
 
-    `uvicorn monkeypox_api:app`
+`uvicorn monkeypox_api:app`
 
 on your command prompt/terminal.
 
