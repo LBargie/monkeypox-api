@@ -2,15 +2,21 @@
 
 This API can be used to fetch the UK's Monkeypox infection case numbers for analysis.
 
-The API was build using FastAPI and the BeautifulSoup package was used to scrape the case numbers from the UK government website:
+Under the hood I am using the BeautifulSoup package to scrape the case numbers from the UK government website:
 
 https://www.gov.uk/government/publications/monkeypox-outbreak-epidemiological-overview/
 
-FastAPI, BeautifulSoup and Uvicorn need to be installed to use the API. These can be pip installed.
+FastAPI, BeautifulSoup and Uvicorn need to be installed to use the API. These can be pip installed:
+
+```
+pip install fastapi
+
+pip install beautifulsoup4
+```
 
 To run the API, run: 
 
-uvicorn monkeypox_api:app 
+    `uvicorn monkeypox_api:app`
 
 on your command prompt/terminal.
 
