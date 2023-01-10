@@ -14,11 +14,7 @@ pip install fastapi
 pip install beautifulsoup4
 ```
 
-To run the API, run: 
-
-`uvicorn monkeypox_api:app`
-
-on your command prompt/terminal.
+Run the API by entering `uvicorn monkeypox_api:app` on your command prompt/terminal.
 
 I have included a Jupyter Notebook with an example of how to get data from the API and analyse the results. 
 
