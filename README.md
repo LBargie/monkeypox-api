@@ -40,7 +40,7 @@ To run the app enter the following on the command line:
 
 docker run --rm -p 80:80 monkeypox-api
 
-Navigate to http://localhost:8080 in your web browser to view the app.
+Navigate to http://localhost:80 in your web browser to view the app.
 
 Hope you find it useful and reach out with any questions. I build this API mostly for sharpening my skills. I hadn't build an API before so I wanted to try out the FastAPI and BeautifulSoup packages.
 
