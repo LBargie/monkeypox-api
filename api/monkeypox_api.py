@@ -1,9 +1,5 @@
-from typing import List, Optional, Type
-from fastapi import FastAPI, Query, Request, status, Depends
-from fastapi.encoders import jsonable_encoder
-from fastapi.exceptions import RequestValidationError, HTTPException
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel, BaseConfig, Field
+from fastapi import FastAPI, Depends
+from fastapi.exceptions import HTTPException
 from .scraper.scrape import MonkeypoxScraper
 import re
 
