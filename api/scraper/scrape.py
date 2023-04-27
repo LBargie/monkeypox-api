@@ -2,7 +2,6 @@ from typing import Dict, List, Union
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import re
-import pandas as pd
 from datetime import datetime
 
 
@@ -75,7 +74,6 @@ class MonkeypoxScraper:
             soup = self.beaut_soup(response)
 
             rows = soup.find_all("td")
-            # headers = soup.find_all("th")
 
             data = []
 
@@ -87,17 +85,21 @@ class MonkeypoxScraper:
 
                 data.append(int(results2[0])) if len(results2) != 0 else None
 
-            if date <= "2022-06-21":
-                results = [[v] for v in data[:5]]
-                headers = ["UK Nation", "Confirmed"]
-
-            elif date > "2022-06-21" and date <= "2022-07-22":
+            if date > "2022-06-21" and date <= "2022-07-22":
                 results = [data[:10][i:i+2] for i in range(0, len(data[:10]), 2)]
                 headers = ["UK Nation", "Confirmed", "Change Since Last Report"]
 
-            else: 
+            elif date > "2022-07-22" and date <= "2022-12-20":
                 results = [data[:15][i:i+3] for i in range(0, len(data[:15]), 3)]
                 headers = ["UK Nation", "Total", "Confirmed", "Highly Probable"]
+
+            elif date <= "2022-06-21":
+                results = [[v] for v in data[:5]]
+                headers = ["UK Nation", "Confirmed"]
+
+            else: 
+                results = [data[:20][i:i+4] for i in range(0, len(data[:20]), 4)]
+                headers = ["UK Nation", "2022 reported cases", "2023 cases in UK", "2023 cases outside UK", "2022 and 2023 total"]
                 
             for result, nation in zip(results, self.nations):
                 result.insert(0, nation)
