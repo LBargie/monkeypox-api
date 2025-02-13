@@ -13,30 +13,30 @@ class Report(BaseModel):
     date: str
     url: str
 
+
 Reports = RootModel[List[Report]]
 
 
 def overview_links(url: str, search_string: str) -> List[str]:
-
     response = httpx.get(url)
 
     soup = BeautifulSoup(response.content, "html.parser")
 
     links = soup.find_all(href=re.compile(search_string))
-    
+
     return [link.get("href") for link in links]
 
 
 def extract_report_dates(url: str) -> datetime:
     """
-        Extract the date from a URL containing the monkeypox data.
-        
-        Arguments:
-            url: the monkeypox URL containing the date to be extracted.
+    Extract the date from a URL containing the monkeypox data.
 
-        Returns:
-            datetime object representing the date extracted from the URL.
-        
+    Arguments:
+        url: the monkeypox URL containing the date to be extracted.
+
+    Returns:
+        datetime object representing the date extracted from the URL.
+
     """
 
     dates = re.findall("\d+-\w+-\d{4}", url)
@@ -46,10 +46,16 @@ def extract_report_dates(url: str) -> datetime:
 
 def available_reports() -> Reports:
     response = sorted(
-        set(overview_links(url=MPOX_URL, search_string="mpox-outbreak-epidemiological-overview-")), 
-        reverse=True, 
-        key=extract_report_dates
-        )
-    dates = sorted(set([extract_report_dates(url).isoformat() for url in response]), reverse=True)
+        set(
+            overview_links(
+                url=MPOX_URL, search_string="mpox-outbreak-epidemiological-overview-"
+            )
+        ),
+        reverse=True,
+        key=extract_report_dates,
+    )
+    dates = sorted(
+        set([extract_report_dates(url).isoformat() for url in response]), reverse=True
+    )
     reports = [Report(url=url, date=date) for url, date in zip(response, dates)]
     return Reports(reports)
