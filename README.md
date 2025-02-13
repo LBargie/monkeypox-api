@@ -25,22 +25,3 @@ https://fastapi.tiangolo.com
 https://beautiful-soup-4.readthedocs.io/en/latest/
 
 https://www.uvicorn.org
-
-### Docker Container
-
-To build the image run the following on the command line (in the same directory as the Dockerfile):
-
-`docker build -t monkeypox-api .`
-
-Alternatively, pull the image from my Docker Hub repository using the following on the command line:
-
-`docker pull lbargie/monkeypox-api`
-
-To run the app enter the following on the command line:
-
-docker run --rm -p 80:80 monkeypox-api
-
-Navigate to http://localhost:80 in your web browser to view the app.
-
-Hope you find it useful and reach out with any questions. I build this API mostly for sharpening my skills. I hadn't build an API before so I wanted to try out the FastAPI and BeautifulSoup packages.
-
